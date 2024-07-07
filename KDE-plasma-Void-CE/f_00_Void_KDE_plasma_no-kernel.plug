@@ -20,7 +20,7 @@
 xbps-install -y base-minimal ncurses-base
 xbps-install -y file mc xterm xauth bash eudev
 xbps-install -y shadow wpa_supplicant
-xbps-install -y ntfs-3g zstd rsync preload
+xbps-install -y ntfs-3g zstd rsync
 
 # set up passwd system
 pwconv
@@ -43,18 +43,18 @@ xbps-alternatives --set bash
 
 xbps-install -Suy kde5 kde5-baseapps
 xbps-install -y xdg-user-dirs xdg-utils xtools xorg
-xbps-install -y vsv xf86-input-libinput sddm polkitd acpid
+xbps-install -y vsv xf86-input-libinput sddm polkitd
 xbps-install -y gvfs gvfs-smb gvfs-mtp gvfs-cdda gvfs-afc btop bpytop nano mc neofetch gst-plugins-bad1
 xbps-install -y gst-plugins-good1 gst-plugins-ugly1 xbacklight setxkbmap spectacle
-xbps-install -y git wget curl p7zip ark unzip tar xinit mpv smplayer octoxbps
+xbps-install -y git wget curl p7zip ark unzip tar xinit mpv smplayer vte3 dialog octoxbps
 xbps-install -y kde-cli-tools mtools lm_sensors squashfs-tools gufw epdfview python3-requests
-xbps-install -y yad xmessage geany gftp gparted mtpaint hddtemp
-xbps-install -y zsh zsh-autosuggestions zsh-syntax-highlighting source-highlight
+xbps-install -y yad xmessage geany gftp gparted mtpaint hddtemp kvantum atool
+xbps-install -y zsh zsh-autosuggestions zsh-syntax-highlighting source-highlight fzf tilix
 
 # xbps-install -y runit-void
 
 # Build essentials
-# xbps-install base-devel make cmake rust cargo
+# xbps-install base-devel make cmake rust cargo go
 
 # xbps-install -Suy void-repo-multilib void-repo-nonfree void-repo-debug void-repo-multilib-nonfree
  
@@ -67,7 +67,7 @@ ln -s /usr/share/fontconfig/conf.avail/70-no-bitmaps.conf /etc/fonts/conf.d/
 xbps-reconfigure -f fontconfig
 
 # Pipewire volume
-xbps-install -y pipewire wireplumber alsa-pipewire pavucontrol pamixer ffmpeg qpwgraph
+xbps-install -y pipewire wireplumber alsa-utils alsa-pipewire libjack-pipewire pavucontrol pamixer ffmpeg ffmpegthumbs qpwgraph
 
 # symlink pipewire.desktop launcher in /etc/xdg/autostart/
 ln -s /usr/share/applications/pipewire.desktop /etc/xdg/autostart/pipewire.desktop
@@ -143,12 +143,6 @@ chmod +x /usr/local/bin/start-up
 # enable dbus service
 ln -s /etc/sv/dbus /etc/runit/runsvdir/default/dbus
 
-# Services
-# ln -s /etc/sv/preload /var/service
-# ln -s /etc/sv/acpid /var/service
-ln -s /etc/sv/preload /etc/runit/runsvdir/default/preload
-ln -s /etc/sv/acpid /etc/runit/runsvdir/default/acpid
-
 # Enable ZSH by default 
 # chsh -s /bin/zsh root
 # sed -i 's/zsh/# zsh/' /root/.bashrc
@@ -210,6 +204,8 @@ chown -R spot:spot /home/spot
 
 usermod -a -G audio spot
 usermod -a -G video spot
+usermod -a -G audio root
+usermod -a -G video root
 chmod 755 /
 chmod 755 /bin
 chmod 755 /lib
@@ -223,6 +219,7 @@ cd /root/Build
 wget -c https://gitlab.com/sofija.p2018/kla-ot2/-/raw/main/KDE-plasma-desktop/save2flash-1.9_0.noarch.xbps
 wget -c https://gitlab.com/sofija.p2018/kla-ot2/-/raw/main/KDE-plasma-desktop/Create-xbps-tools-1.2_1.noarch.xbps
 wget -c https://gitlab.com/sofija.p2018/kla-ot2/-/raw/main/KDE-plasma-desktop/kde-plasma-config-1.0_1.noarch.xbps
+wget -c https://gitlab.com/sofija.p2018/kla-ot2/-/raw/main/KDE-plasma-desktop/kio-admin-4.5_1.x86_64.xbps
 
 #### Install KLV custom packages ####
 
@@ -238,6 +235,9 @@ xbps-install -y --repository=Build/ Create-xbps-tools-1.2_1
 
 # xbps kde-plasma-config
 xbps-install -y --repository=Build/ kde-plasma-config-1.0_1
+
+# xbps kio-admin
+xbps-install -y --repository=Build/ kio-admin-4.5_1
 
 # Set execution permissions recursivly for binaries and scripts
 chmod +x -R /usr/local/bin
@@ -266,3 +266,4 @@ ln -sf /usr/share/zoneinfo/${current_timezone} /etc/localtime
 #-----------------------------------------------------------------------
 echo "desktop build process finished"
 
+desktop build process finished"

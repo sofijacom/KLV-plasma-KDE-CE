@@ -31,7 +31,7 @@ wget -c https://gitlab.com/firstrib/firstrib/-/raw/master/latest/build_system/um
 
 # Main KL addon containing the likes of gtkdialog, filemnt, UExtract, gxmessage, save2flash and more
 # save2flash works with command-line-only distros too
-##wget -c https://gitlab.com/sofija.p2018/kla-ot2/-/raw/main/KLV-Spectrwm/Plugin/15gtkdialogGTK3_filemnt64.sfs
+wget -c https://gitlab.com/sofija.p2018/kla-ot2/-/raw/main/KLV-Spectrwm/Plugin/15gtkdialogGTK3_filemnt64.sfs
 
 # Build the Void Linux root filesystem to firstrib_rootfs directory
 # NOTE WELL: If you have an alternative f_plugin in your bootfrom directory (name must start with f_),

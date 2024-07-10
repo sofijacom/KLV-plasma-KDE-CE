@@ -3,11 +3,6 @@
 ![Снимок экрана_20240710_134306](https://github.com/sofijacom/KDE-plasma-Void-CE/assets/107557749/33d847a9-8d59-43df-9db1-fff722148172)
 
 
-![Снимок экрана_20240708_013723](https://github.com/sofijacom/KDE-plasma-Void-CE/assets/107557749/bf8b0f1a-d484-4b83-9caf-01968162fb11)
-
-
-![2024-07-07_20-41](https://github.com/sofijacom/KDE-plasma-Void-CE/assets/107557749/f4306dcd-528f-4439-a9a4-38aa9a10f63d)
-
 1) Create a folder `KDE-plasma-Void-CE` typing in the terminal `mkdir -p KDE-plasma-Void-CE`
 
 2) Open a terminal in the created folder `KDE-plasma-Void-CE` or go to the folder by typing in the terminal

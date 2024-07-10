@@ -1,5 +1,8 @@
 # *KDE-plasma-Void-CE*
 
+![Снимок экрана_20240710_134306](https://github.com/sofijacom/KDE-plasma-Void-CE/assets/107557749/33d847a9-8d59-43df-9db1-fff722148172)
+
+
 ![Снимок экрана_20240708_013723](https://github.com/sofijacom/KDE-plasma-Void-CE/assets/107557749/bf8b0f1a-d484-4b83-9caf-01968162fb11)
 
 

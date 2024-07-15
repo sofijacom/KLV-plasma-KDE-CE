@@ -19,7 +19,7 @@
 # base system
 xbps-install -y base-minimal ncurses-base
 xbps-install -y file mc xterm xauth bash eudev
-xbps-install -y shadow wpa_supplicant elogind
+xbps-install -y shadow wpa_supplicant
 xbps-install -y ntfs-3g zstd rsync
 
 # set up passwd system

@@ -248,6 +248,10 @@ chmod +x -R /usr/local/bin
 rm -r /root/Build
 rm /var/cache/xbps/*
 
+# Set permissions
+#
+chown -R spot:spot /home/spot
+
 #-----------------------------------------------------------------------
 
 ## TIMEZONE SETUP

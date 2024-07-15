@@ -49,7 +49,7 @@ xbps-install -y gst-plugins-good1 gst-plugins-ugly1 xbacklight setxkbmap spectac
 xbps-install -y git wget curl p7zip ark unzip tar xinit mpv smplayer vte3 dialog octoxbps
 xbps-install -y kde-cli-tools mtools lm_sensors squashfs-tools gufw epdfview python3-requests
 xbps-install -y yad xmessage geany gftp gparted mtpaint hddtemp kvantum atool
-xbps-install -y zsh zsh-autosuggestions zsh-syntax-highlighting source-highlight fzf tilix
+xbps-install -y zsh zsh-autosuggestions zsh-syntax-highlighting source-highlight fzf fd tilix
 
 # xbps-install -y runit-void
 

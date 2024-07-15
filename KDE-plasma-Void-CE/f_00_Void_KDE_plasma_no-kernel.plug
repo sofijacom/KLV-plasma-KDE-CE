@@ -43,7 +43,7 @@ xbps-alternatives --set bash
 
 xbps-install -Suy kde5 kde5-baseapps
 xbps-install -y xdg-user-dirs xdg-utils xtools xorg
-xbps-install -y vsv xf86-input-libinput sddm polkitd
+xbps-install -y vsv xf86-input-libinput polkitd
 xbps-install -y gvfs gvfs-smb gvfs-mtp gvfs-cdda gvfs-afc btop bpytop nano mc neofetch gst-plugins-bad1
 xbps-install -y gst-plugins-good1 gst-plugins-ugly1 xbacklight setxkbmap spectacle
 xbps-install -y git wget curl p7zip ark unzip tar xinit mpv smplayer vte3 dialog octoxbps

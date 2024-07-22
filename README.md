@@ -2,6 +2,8 @@
 
 ![Снимок экрана_20240710_134306](https://github.com/sofijacom/KDE-plasma-Void-CE/assets/107557749/33d847a9-8d59-43df-9db1-fff722148172)
 
+![Снимок экрана_20240722_152015](https://github.com/user-attachments/assets/ed7b04b3-e59a-40b3-b593-f767b3156ac1)
+
 
 1) Create a folder `KDE-plasma-Void-CE` typing in the terminal `mkdir -p KDE-plasma-Void-CE`
 

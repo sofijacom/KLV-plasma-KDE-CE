@@ -5,11 +5,11 @@
 ![Снимок экрана_20240722_152015](https://github.com/user-attachments/assets/ed7b04b3-e59a-40b3-b593-f767b3156ac1)
 
 
-1) Create a folder `KDE-plasma-Void-CE` typing in the terminal `mkdir -p KDE-plasma-Void-CE`
+1) Create a folder `KLV-plasma-KDE-CE` typing in the terminal `mkdir -p KLV-plasma-KDE-CE`
 
-2) Open a terminal in the created folder `KDE-plasma-Void-CE` or go to the folder by typing in the terminal
+2) Open a terminal in the created folder `KLV-plasma-KDE-CE` or go to the folder by typing in the terminal
 
-   - `cd KDE-plasma-Void-CE`
+   - `cd KLV-plasma-KDE-CE`
 
 3) Place the build script  `FR_minimal_KDE_plasma_desktop.sh` in the created folder.
    
@@ -32,5 +32,5 @@ mksquashfs 07firstrib_rootfs 07KDE-plasma-Void-CE-x.x.sfs -noappend -comp xz -b 
 
 
 ```
- git clone https://github.com/sofijacom/KDE-plasma-Void-CE.git
+ git clone https://github.com/sofijacom/KLV-plasma-KDE-CE.git
 ```

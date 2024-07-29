@@ -51,7 +51,7 @@ xbps-install -y kde-cli-tools mtools lm_sensors squashfs-tools gufw plasma-firew
 xbps-install -y yad xmessage leafpad gftp gparted mtpaint hddtemp kvantum krdc krdp atool
 xbps-install -y zsh zsh-autosuggestions zsh-syntax-highlighting source-highlight fzf fd gettext
 xbps-install -y wayland-utils Vulkan-Tools void-artwork isoimagewriter kcalc mtpfs kcolorchooser gptfdisk wmctrl
-xbps-install -y dosfstools e2fsprogs btrfs-progs exfatprogs f2fs-tools fuse-exfat udisks2
+xbps-install -y dosfstools e2fsprogs btrfs-progs f2fs-tools udisks2
 # xbps-install -y dejavu-fonts-ttf noto-fonts-emoji nerd-fonts-symbols-ttf fonts-roboto-ttf font-awesome6
 
 # xbps-install -y runit-void plymouth

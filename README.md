@@ -19,12 +19,12 @@
 
 6) Wait for the build to finish.
 
-7) After the build is complete to package `07firstrib_rootfs` into `07KDE-plasma-Void-CE-x.x.sfs` where x.x is your build number.
+7) After the build is complete to package `07firstrib_rootfs` into `07KLV-plasma-KDE-x.x.sfs` where x.x is your build number.
 
 8) Type in terminal.
 
 ```
-mksquashfs 07firstrib_rootfs 07KDE-plasma-Void-CE-x.x.sfs -noappend -comp xz -b 512k
+mksquashfs 07firstrib_rootfs 07KLV-plasma-KDE-x.x.sfs -noappend -comp xz -b 512k
 ```
   - where x.x is your build number.
 

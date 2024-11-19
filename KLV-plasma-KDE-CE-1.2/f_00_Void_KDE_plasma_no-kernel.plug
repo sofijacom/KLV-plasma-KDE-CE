@@ -52,7 +52,7 @@ xbps-install -y yad xmessage leafpad parted plasma-disks kpmcore mtpaint kolourp
 xbps-install -y zsh zsh-autosuggestions zsh-syntax-highlighting source-highlight fzf fd ripgrep gettext
 xbps-install -y wayland-utils Vulkan-Tools Vulkan-Headers void-artwork isoimagewriter kcolorchooser kcalc mtpfs gptfdisk wmctrl
 xbps-install -y dosfstools e2fsprogs btrfs-progs f2fs-tools udisks2 gtk-layer-shell plasma-vault ImageMagick
-xbps-install -y kdeconnect kcharselect hddtemp sweeper filelight gwenview skanlite partitionmanager
+xbps-install -y kdeconnect kcharselect sweeper filelight gwenview skanlite partitionmanager
 xbps-install -y dejavu-fonts-ttf noto-fonts-emoji nerd-fonts-symbols-ttf fonts-roboto-ttf font-awesome6
 
 # xbps-install -y runit-void plymouth

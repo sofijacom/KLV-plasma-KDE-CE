@@ -3,6 +3,10 @@
 ![Снимок экрана_20240722_152015](https://github.com/user-attachments/assets/ed7b04b3-e59a-40b3-b593-f767b3156ac1)
 
 
+<a id="installation"></a>  
+<img src="https://github.com/user-attachments/assets/7e1e2fa0-ab50-4901-a024-fe731fb44ab3" width="200"/>
+---
+
 1) Create a folder `KLV-plasma-KDE-CE` typing in the terminal `mkdir -p KLV-plasma-KDE-CE`
 
 2) Open a terminal in the created folder `KLV-plasma-KDE-CE` or go to the folder by typing in the terminal

@@ -5,7 +5,6 @@
 
 <img width="1366" height="833" alt="laptop" src="https://github.com/user-attachments/assets/fa0deedc-dc87-47a6-80ba-8c21ef8c140c" />
 
-<hr>
 
 <a id="installation"></a>  
 <img src="https://github.com/user-attachments/assets/7e1e2fa0-ab50-4901-a024-fe731fb44ab3" width="200"/>

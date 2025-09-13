@@ -7,9 +7,6 @@
 <img width="750" height="458" alt="laptop" src="https://github.com/user-attachments/assets/7e1637d3-755f-4a07-ba67-27a2cc03e8f1" />
 
 
-![Снимок экрана_20240722_152015](https://github.com/user-attachments/assets/ed7b04b3-e59a-40b3-b593-f767b3156ac1)
-
-
 <a id="installation"></a>  
 <img src="https://github.com/user-attachments/assets/7e1e2fa0-ab50-4901-a024-fe731fb44ab3" width="200"/>
 ---

@@ -55,7 +55,7 @@ echo vsv jq xf86-input-libinput kdegraphics-thumbnailers ffmpegthumbnailer polki
 | xargs -n1 xbps-install -y
 echo gvfs gvfs-smb gvfs-mtp gvfs-cdda gvfs-afc acpid nano fastfetch gst-plugins-bad1 \
 | xargs -n1 xbps-install -y
-echo gst-plugins-good1 gst-plugins-ugly1 xbacklight setxkbmap spectacle conky akregator \
+echo gst-plugins-good1 gst-plugins-ugly1 xbacklight setxkbmap spectacle akregator \
 | xargs -n1 xbps-install -y
 echo git wget curl p7zip ark unzip tar unrar dtrx xinit mpv smplayer vte3 dialog octoxbps \
 | xargs -n1 xbps-install -y
@@ -71,7 +71,7 @@ echo dosfstools e2fsprogs btrfs-progs f2fs-tools udisks2 gtk-layer-shell plasma-
 | xargs -n1 xbps-install -y
 echo kdeconnect kcharselect sweeper filelight gwenview skanlite partitionmanager samba smbclient cifs-utils \
 | xargs -n1 xbps-install -y
-echo nerd-fonts-symbols-ttf fonts-roboto-ttf font-awesome6 \
+echo nerd-fonts-symbols-ttf fonts-roboto-ttf font-awesome6 ocean-sound-theme conky \
 | xargs -n1 xbps-install -y
 
 # Build essentials

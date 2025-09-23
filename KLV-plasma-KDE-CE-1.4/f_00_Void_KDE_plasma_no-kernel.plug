@@ -55,7 +55,7 @@ echo vsv jq xf86-input-libinput kdegraphics-thumbnailers ffmpegthumbnailer polki
 | xargs -n1 xbps-install -y
 echo gvfs gvfs-smb gvfs-mtp gvfs-cdda gvfs-afc acpid nano fastfetch gst-plugins-bad1 \
 | xargs -n1 xbps-install -y
-echo gst-plugins-good1 gst-plugins-ugly1 xbacklight setxkbmap spectacle akregator \
+echo gst-plugins-good1 gst-plugins-ugly1 xbacklight setxkbmap spectacle akregator kmod \
 | xargs -n1 xbps-install -y
 echo git wget curl p7zip ark unzip tar unrar dtrx xinit mpv smplayer vte3 dialog octoxbps \
 | xargs -n1 xbps-install -y

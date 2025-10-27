@@ -36,6 +36,7 @@ usermod --shell /bin/bash root
 
 # Set locale to en_US.UTF-8 
 sed -i 's/#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/default/libc-locales
+sed -i 's/#C.UTF-8 UTF-8/C.UTF-8 UTF-8/' /etc/default/libc-locales
 echo "LANG=en_US.UTF-8" >> /etc/environment
 xbps-reconfigure -f glibc-locales
 

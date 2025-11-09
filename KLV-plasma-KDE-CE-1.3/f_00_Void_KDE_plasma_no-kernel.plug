@@ -435,12 +435,3 @@ ln -sf /usr/share/zoneinfo/${current_timezone} /etc/localtime
 # current_timezone="Europe/Moscow"
 # ln -sf /usr/share/zoneinfo/${current_timezone} /etc/localtime
 
-#-----------------------------------------------------------------------
-echo "desktop build process finished"
-
-desktop build process finished"
-ess finished"
-"
-d process finished"
-ess finished"
-"

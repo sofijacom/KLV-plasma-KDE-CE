@@ -347,12 +347,12 @@ wget -c https://gitlab.com/sofija.p2018/kla-ot2/-/raw/main/KDE-plasma-desktop/sa
 wget -c https://gitlab.com/sofija.p2018/kla-ot2/-/raw/main/KDE-plasma-desktop/Create-xbps-tools-1.2_1.noarch.xbps
 wget -c https://gitlab.com/sofija.p2018/kla-ot2/-/raw/main/KDE-plasma-desktop/kde-plasma-config-1.0_1.noarch.xbps
 wget -c https://gitlab.com/sofija.p2018/kla-ot2/-/raw/main/KDE-plasma-desktop/kio-admin-24.08.2_1.x86_64.xbps
-wget -c https://gitlab.com/sofija.p2018/kla-ot2/-/raw/main/KDE-plasma-desktop/uextract-4.7_1.noarch.xbps
+wget -c https://gitlab.com/sofija.p2018/kla-ot2/-/raw/main/KDE-plasma-desktop/uextract-4.14_0.x86_64.xbps
 wget -c https://gitlab.com/sofija.p2018/kla-ot2/-/raw/main/KDE-plasma-desktop/Conky_toggle_switch-1.0_1.noarch.xbps
-wget -c https://gitlab.com/sofija.p2018/kla-ot2/-/raw/main/KDE-plasma-desktop/plasma-welcome-6.3.4_1.x86_64.xbps
+wget -c https://gitlab.com/sofija.p2018/kla-ot2/-/raw/main/KDE-plasma-desktop/plasma-welcome-6.4.5_1.x86_64.xbps
 wget -c https://gitlab.com/sofija.p2018/kla-ot2/-/raw/main/KDE-plasma-desktop/Yradio-Hypr-1.8_1.noarch.xbps
 wget -c https://gitlab.com/sofija.p2018/kla-ot2/-/raw/main/KDE-plasma-desktop/plasma-applet-weather-widget-3.0_3.x86_64.xbps
-wget -c https://gitlab.com/sofija.p2018/kla-ot2/-/raw/main/KDE-plasma-desktop/packit-1.0_2.noarch.xbps
+wget -c https://gitlab.com/sofija.p2018/kla-ot2/-/raw/main/KDE-plasma-desktop/packit-1.25_1.noarch.xbps
 wget -c https://gitlab.com/sofija.p2018/kla-ot2/-/raw/main/KDE-plasma-desktop/qemu-ready-0.3_1.x86_64.xbps
 wget -c https://gitlab.com/sofija.p2018/kla-ot2/-/raw/main/KDE-plasma-desktop/gadmin-samba-0.3.2_1.x86_64.xbps
 wget -c https://gitlab.com/sofija.p2018/kla-ot2/-/raw/main/KDE-plasma-desktop/Termv-1.4_1.x86_64.xbps
@@ -378,13 +378,13 @@ xbps-install -y --repository=Build/ kde-plasma-config-1.0_1
 xbps-install -y --repository=Build/ kio-admin-24.08.2_1
 
 # xbps uextract
-xbps-install -y --repository=Build/ uextract-4.7_1
+xbps-install -y --repository=Build/ uextract-4.14_0
 
 # xbps Conky_toggle_switch
 xbps-install -y --repository=Build/ Conky_toggle_switch-1.0_1
 
 # xbps plasma-welcome
-xbps-install -y --repository=Build/ plasma-welcome-6.3.4_1
+xbps-install -y --repository=Build/ plasma-welcome-6.4.5_1
 
 # xbps Yradio-Hypr
 xbps-install -y --repository=Build/ Yradio-Hypr-1.8_1
@@ -393,7 +393,7 @@ xbps-install -y --repository=Build/ Yradio-Hypr-1.8_1
 xbps-install -y --repository=Build/ plasma-applet-weather-widget-3.0_3
 
 # xbps packit
-xbps-install -y --repository=Build/ packit-1.0_2
+xbps-install -y --repository=Build/ packit-1.25_1
 
 # xbps qemu-ready
 xbps-install -y --repository=Build/ qemu-ready-0.3_1

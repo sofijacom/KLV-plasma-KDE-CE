@@ -1,0 +1,180 @@
+#!/bin/bash
+# fredx181, 2024-01-18
+#set -x
+# https://forum.puppylinux.com/viewtopic.php?p=112702#p112702
+
+
+if findmnt | grep -q "/mnt/live/memory/images/changes-exit"; then
+RAM_2=yes
+export UC="$(findmnt | grep "/mnt/live/memory/images/changes-exit" | awk '{print $3}' | sed 's#[][]##g; s#dev#mnt#g')"
+if [ $(echo $UC | grep "loop") ]; then
+export SFILE=yes
+export UC=$(mount | grep /mnt/live/memory/images/changes-exit | awk '{print $1}')
+fi
+echo $UC
+else
+export UC="$(findmnt | grep "/mnt/live/memory/changes" | awk '{print $3}' | sed 's#[][]##g; s#dev#mnt#g')"
+if [ $(echo $UC | grep "loop") ]; then
+export SFILE=yes
+export UC=$(mount | grep /mnt/live/memory/changes | awk '{print $1}')
+fi
+[ -e "/mnt/live/etc/nochanges" ] && RAM_0=yes
+fi
+
+echo $UC
+if [ "$UC" = "" ]; then
+yad --center --borders=10 --title="No changes found" --text="\n Could not find changes \n Exiting..." --width=500 --button="Close:0"
+exit
+fi
+
+if [ "$RAM_0" = "yes" ]; then
+yad --center --borders=10 --title="No changes" --text="\n Looks like you are running the system without changes \n Cannot create a restore point, sorry \n Exiting..." --width=500 --button="Close:0"
+exit
+fi
+
+if [ "$RAM_2" = "yes" ]; then
+yad --center --borders=10 --title="EXIT mode detected" --text="\n Looks like you are running the system with changes=EXIT: mode (save on demand) \n If you want to include the current changes in a restore point to be created: \n Click 'Cancel' and run <b>save2flash</b> first \n Or: click 'OK' to continue" --width=600
+ret=$?
+[[ $ret -ne 0 ]] && exit
+fi
+
+create_restore () {    # create restore point
+s=$(date +"%Y.%m.%d_%H.%M.%S")
+ss="${s::4}-${s:5:2}-${s:8:2}"
+t="${s:11:2}:${s:14:2}:${s:17:2}"
+yad --center --borders=15 --text=" <b><big><big>Copying...</big></big></b>  \n <b><big><big>Please wait . . .</big></big></b>  " --height=70 --no-buttons --undecorated --on-top &
+
+if [ "$SFILE" = "yes" ]; then
+SF="$(basename "${UC}" | sed 's#.bak##; s#_savefile_.*##')"
+SAVE="$(echo "${SF}" | sed 's#.bak##; s#_savefile_*##')_savefile_${s}"
+cp -a "$UC" "$(dirname "$UC")/${SAVE}"
+echo "Restore point: ${SAVE} created !"
+echo "Point of Time: $(date --date=$ss +"%d %h %Y") $t"
+else
+mkdir -p $(dirname "$UC")/changes_$s
+cp -a "$UC/"* "$(dirname "$UC")/changes_$s/"
+echo "Restore point: $(dirname "$UC")/changes_$s created !"
+echo "Point of Time: $(date --date=$ss +"%d %h %Y") $t"
+SAVE="changes_${s}"
+fi
+sleep 2
+kill $!
+EXTRA_INFO=$(yad --title="Extra Info" --borders=8 --entry --center --width=550 --text="Add some extra info about this restore point\n(will show in the log file),\nor leave empty as you wish" --button="OK:0")
+#[ "$EXTRA_INFO" = "" ] && EXTRA_INFO="no info"
+echo -e "[At: $(date --date=$ss +"%d %h %Y") $t] Created: $SAVE \n $EXTRA_INFO\n--------------------------------------------------------------------------------" >> "$(dirname ${UC})/restore_history"
+#echo -e "[At: $(date --date=$ss +"%d %h %Y") $t] Created: $SAVE \n Extra_Info: $EXTRA_INFO\n--------------------------------------------------------------------------------" > "$(dirname ${UC})/$SAVE/restorepoint"
+echo -e "Restore point created \nSee also info in created history log: \n $(dirname ${UC})/restore_history"
+yad --center --title="Restore point created" --text="\n Restore point: $(dirname "$UC")/$SAVE created ! \n Point of Time: $(date --date=$ss +"%d %h %Y") $t \n\n See also info in created history log: \n $(dirname ${UC})/restore_history" --width 600 --button="Close:0"
+}
+export -f create_restore
+
+history () {
+if [ ! -f "$(dirname ${UC})/restore_history" ]; then
+yad --title="No history found" --text="No history log found (yet)                         " --button="Close:0"
+exit
+fi
+cat "$(dirname ${UC})/restore_history" | yad --center --title="History Log (read-only)" --text-info --width=780 --height=500
+}; export -f history
+
+[ "$SFILE" = "yes" ] && SAVETYPE="*_savefile_*" || SAVETYPE="changes_*"
+
+if [ "$(find "$(dirname "$UC")" -mindepth 1 -maxdepth 1 -name "$SAVETYPE")" ]; then
+yad --center --item-separator=":"  --title="Create or Restore ?" --text="\n Would you like to CREATE a restore point ?\n Or RESTORE to a point in history ?\n" \
+--button="History Log:bash -c history" --button="CREATE:0"  --button="RESTORE:2" --button="CANCEL:1"
+ret=$?
+
+if [[ $ret -eq 0 ]]; then
+create_restore
+
+elif [[ $ret -eq 2 ]]; then
+#rm /tmp/RESTORElist 2> /dev/null
+if [ -e /tmp/RESTORElist ]; then
+echo "Restoring can be done only once during a session"
+yad --center --borders=10 --title="Already restored" --text="\n Looks like you have restored already (can be done only once) \n Cannot continue unless you reboot, \n Exiting..." --width=500 --button="Close:0"
+exit
+fi
+#set -x
+while read f; do
+echo $f >> /tmp/RESTORElist
+if [ "$SFILE" = "yes" ]; then
+s="$(echo "$f" | sed 's#.bak##; s#.*_savefile_##')"
+else
+s="$(echo "$f" | sed 's#.bak##; s#changes_##')"
+fi
+ss="${s::4}-${s:5:2}-${s:8:2}"
+t="${s:11:2}:${s:14:2}:${s:17:2}"
+echo "$(date --date=$ss +"%d %h %Y") $t" >> /tmp/RESTORElist
+if grep -q "$f" $(dirname "$UC")/restore_history 2> /dev/null; then
+ if [ "$(echo "$f" | grep .bak)" ]; then
+REST=$(grep "$f" $(dirname "$UC")/restore_history 2> /dev/null | grep -o "Restored:.*" | awk '{print $2}')
+CR_REST=$(grep -A1 "Created: $REST" $(dirname "$UC")/restore_history 2> /dev/null | grep -v "$REST")
+[[ -z "${CR_REST// }" ]] && CR_REST="No info"
+echo "Restored: $REST (${CR_REST})" >> /tmp/RESTORElist
+ else
+EI=$(grep -A1 "$f" $(dirname "$UC")/restore_history 2> /dev/null | grep -v "$f")
+[[ -z "${EI// }" ]] && EI="No info"
+echo "$EI" | sed 's/^/Created: /' >> /tmp/RESTORElist
+ fi
+else
+echo "No info" >> /tmp/RESTORElist
+fi
+done <<< "$(find $(dirname "$UC") -mindepth 1 -maxdepth 1 -name "$SAVETYPE" | sed "s#$(dirname ${UC})/##g")"
+
+result=$(cat /tmp/RESTORElist | yad --center --title="Choose restore point" --text="<b>Choose restore point. \nAny item with .bak extension is a backup made from the original save (when restored)</b>" --list --column Name --column Date --column Info --width=840 --height=400)
+ret=$?
+if [[ $ret -ne 0 ]]; then
+rm -f /tmp/RESTORElist
+exit
+fi
+export rest="`echo $result | cut -d "|" -f 1`"
+export d="`echo $result | cut -d "|" -f 2`"
+
+if [ -z "$rest" ]; then
+yad --center --width=250 --title="Nothing selected" --text="\n Nothing selected\n Exiting..." --button="Close:0"
+rm -f /tmp/RESTORElist
+exit
+fi
+
+echo "$rest will be renamed to changes, applied after reboot"
+# rename original changes to changes<timestamp>.bak 
+s=$(date +"%Y.%m.%d_%H.%M.%S")
+ss="${s::4}-${s:5:2}-${s:8:2}"
+t="${s:11:2}:${s:14:2}:${s:17:2}"
+if [ "$SFILE" = "yes" ]; then
+mv -f "${UC}" "${UC}"_savefile_${s}.bak
+BAK="$(basename "${UC}")_savefile_${s}.bak"
+echo -e "[At: $(date --date=$ss +"%d %h %Y") $t] Restored: $rest $d Original savefile renamed to ${BAK}\n--------------------------------------------------------------------------------"  >> "$(dirname ${UC})/restore_history"
+# rename 'timestamped' savefile to original
+mv -f "$(dirname ${UC})/$rest" "${UC}"
+else
+mv -f "$(dirname ${UC})/changes" "$(dirname ${UC})/changes_${s}.bak"
+BAK="changes_${s}.bak"
+echo -e "[At: $(date --date=$ss +"%d %h %Y") $t] Restored: $rest $d Original changes renamed to changes_${s}.bak\n--------------------------------------------------------------------------------" >> "$(dirname ${UC})/restore_history"
+# rename 'timestamped' changes to changes
+mv -f "$(dirname ${UC})/$rest" "$(dirname ${UC})/changes"
+[ "$SFILE" != "yes" ] && echo -e "[At: $(date --date=$ss +"%d %h %Y") $t] Restored: $rest $d Original changes renamed to changes_${s}.bak" > "$(dirname ${UC})/changes/restored"
+fi
+
+yad --center --borders=10 --title="Restored..." --text=" Restored to: \n Point of Time: $(date --date=$ss +"%d %h %Y") $t \n <b>Reboot to apply</b> \n (the original changes is renamed to <b>$BAK</b>)\n Do <b>NOT</b> remove it as it's the new mountpoint for the changes (during this session) \n (and (for next session, after reboot, it will be part of history, can be chosen from the restore list again)\n\n See also info in created history log: \n $(dirname ${UC})/restore_history \n\n <b>Note:</b> Direct reboot is adviced ! \n Because any change you make in the system before rebooting  will <b>NOT</b> have any effect \n <b>Reboot Now ?</b>" --width=700 --button="YES:0"  --button="no:1"
+  if [ $? -eq 0 ]; then
+  touch /mnt/live/tmp/changesx
+  reboot
+  else
+  exit
+  fi
+
+else
+exit
+fi
+
+else
+yad --center --width=450 --title="Create Restore point ?" --text="\n No restore points found yet. \n Would you like to create a restore point ?\n (will create a timestamped save)\n"
+ret=$?
+[[ $ret -ne 0 ]] && exit
+create_restore
+fi
+
+
+
+
+

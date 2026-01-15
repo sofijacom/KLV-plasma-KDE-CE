@@ -2,6 +2,9 @@
    
 # *KLV-plasma-KDE-CE*
 
+  kio-admin
+![Снимок экрана_20240708_125022](https://github.com/sofijacom/KDE-plasma-Void-CE/assets/107557749/a673415c-0856-40d9-85e6-c07322c60aa3)
+=======
 
 <img width="1366" height="833" alt="laptop" src="https://github.com/user-attachments/assets/fa0deedc-dc87-47a6-80ba-8c21ef8c140c" />
 

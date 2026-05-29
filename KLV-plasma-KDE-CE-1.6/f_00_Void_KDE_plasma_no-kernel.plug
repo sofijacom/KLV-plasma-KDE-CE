@@ -110,14 +110,14 @@ ln -s /usr/share/alsa/alsa.conf.d/50-pipewire.conf /etc/alsa/conf.d
 ln -s /usr/share/alsa/alsa.conf.d/99-pipewire-default.conf /etc/alsa/conf.d
 
 # for root desktop
-mkdir -p /root/.config/pipewire/pipewire.conf.d 
-ln -s /usr/share/examples/wireplumber/10-wireplumber.conf /root/.config/pipewire/pipewire.conf.d/
-ln -s /usr/share/examples/pipewire/20-pipewire-pulse.conf /root/.config/pipewire/pipewire.conf.d/
+# mkdir -p /root/.config/pipewire/pipewire.conf.d 
+# ln -s /usr/share/examples/wireplumber/10-wireplumber.conf /root/.config/pipewire/pipewire.conf.d/
+# ln -s /usr/share/examples/pipewire/20-pipewire-pulse.conf /root/.config/pipewire/pipewire.conf.d/
 
 # for spot desktop 
-mkdir -p /home/spot/.config/pipewire/pipewire.conf.d 
-ln -s /usr/share/examples/wireplumber/10-wireplumber.conf /home/spot/.config/pipewire/pipewire.conf.d/
-ln -s /usr/share/examples/pipewire/20-pipewire-pulse.conf /home/spot/.config/pipewire/pipewire.conf.d/
+# mkdir -p /home/spot/.config/pipewire/pipewire.conf.d 
+# ln -s /usr/share/examples/wireplumber/10-wireplumber.conf /home/spot/.config/pipewire/pipewire.conf.d/
+# ln -s /usr/share/examples/pipewire/20-pipewire-pulse.conf /home/spot/.config/pipewire/pipewire.conf.d/
 
 # power-profiles-daemon
 # powerprofilesctl set power-saver / balanced #change selected profile

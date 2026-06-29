@@ -45,7 +45,7 @@ xbps-reconfigure -f glibc-locales
 xbps-alternatives --set bash
 
 ## --------------------------------------------------------------------------
-## KDE Plasma powerdevil powertop
+## KDE Plasma powerdevil powertop ++++++++++++
 
 echo kde5 kde5-baseapps \
 | xargs -n1 xbps-install -Syu

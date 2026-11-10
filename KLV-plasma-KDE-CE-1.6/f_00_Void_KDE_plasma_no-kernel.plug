@@ -75,7 +75,7 @@ echo kdeconnect kcharselect sweeper filelight gwenview skanlite partitionmanager
 | xargs -n1 xbps-install -y
 echo nerd-fonts-symbols-ttf fonts-roboto-ttf font-awesome6 ocean-sound-theme conky \
 | xargs -n1 xbps-install -y
-echo intel-video-accel mesa-intel-dri mesa-vulkan-intel vulkan-loader \
+echo intel-video-accel mesa-intel-dri mesa-vulkan-intel mesa-vulkan-nouveau vulkan-loader \
 | xargs -n1 xbps-install -y
 
 
